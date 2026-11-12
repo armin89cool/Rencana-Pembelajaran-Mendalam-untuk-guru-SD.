@@ -23,6 +23,23 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Validate application JavaScript
+        run: |
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          html = Path("index.html").read_text(encoding="utf-8")
+          scripts = re.findall(r"<script>(.*?)</script>", html, flags=re.S)
+          if not scripts:
+              raise SystemExit("No inline application script found")
+          required = ["generate", "save", "load", "apply", "word", "pdf", "copy"]
+          for control in required:
+              if f"case '{control}'" not in html:
+                  raise SystemExit(f"Missing click handler for: {control}")
+          Path("/tmp/rpm-smart.js").write_text("\\n".join(scripts), encoding="utf-8")
+          print("Found", len(scripts), "script block(s); all main controls have click handlers.")
+          PY
+          node --check /tmp/rpm-smart.js
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
         with:
