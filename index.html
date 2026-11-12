@@ -34,39 +34,170 @@
 <footer>RPM SMART 2026 • Prototipe 1.0 • Berjalan langsung di browser</footer>
 </section></div></main>
 <script>
-const $=id=>document.getElementById(id), ids=['school','grade','phase','semester','year','teacher','subject','topic','duration','goal','model','context','media'];
-const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let docText='';
-function data(){let d={};ids.forEach(k=>d[k]=$(k).value.trim());return d}
-function generate(){
- const d=data(),topic=esc(d.topic),teacher=esc(d.teacher);
- $('rpm').innerHTML='<h2>Rencana Pembelajaran Mendalam</h2><h2>'+esc(d.subject)+'</h2><p style="text-align:center"><b>Materi: '+topic+'</b></p>'+
- '<h3>A. IDENTITAS PEMBELAJARAN</h3><table><tr><td>Satuan Pendidikan</td><td>'+esc(d.school)+'</td><td>Fase/Kelas</td><td>'+esc(d.phase)+' / '+esc(d.grade)+'</td></tr><tr><td>Mata Pelajaran</td><td>'+esc(d.subject)+'</td><td>Semester</td><td>'+esc(d.semester)+'</td></tr><tr><td>Tahun Pelajaran</td><td>'+esc(d.year)+'</td><td>Alokasi Waktu</td><td>'+esc(d.duration)+'</td></tr><tr><td>Guru</td><td colspan="3">'+teacher+'</td></tr></table>'+
- '<h3>B. IDENTIFIKASI KESIAPAN PESERTA DIDIK</h3><p>'+esc(d.context)+' Guru memetakan pengetahuan awal melalui tanya jawab singkat, mengamati pengalaman, minat, kesiapan, dan kebutuhan dukungan murid.</p>'+
- '<h3>C. DESAIN PEMBELAJARAN</h3><p><b>Tujuan pembelajaran:</b> '+esc(d.goal)+'</p><p><b>Topik kontekstual:</b> '+topic+' dalam kehidupan di rumah, sekolah, dan masyarakat.</p><p><b>Praktik pedagogis:</b> '+esc(d.model)+' dipadukan dengan diskusi, tanya jawab, simulasi, dan refleksi.</p><p><b>Dimensi profil lulusan yang dikembangkan:</b> kewargaan, penalaran kritis, kolaborasi, komunikasi, dan kemandirian (sesuaikan dengan fokus kegiatan).</p><p><b>Kemitraan:</b> keluarga mendukung pembiasaan aturan di rumah. <b>Lingkungan belajar:</b> aman, inklusif, dan menghargai pendapat. <b>Pemanfaatan digital:</b> gambar, video singkat, atau kuis jika tersedia.</p><p><b>Media dan sumber:</b> '+esc(d.media)+'.</p>'+
- '<h3>D. PENGALAMAN BELAJAR</h3><table><tr><th>Tahap</th><th>Aktivitas pembelajaran</th><th>Waktu</th></tr>'+
- '<tr><td><b>Pendahuluan</b><br>Berkesadaran dan menggembirakan</td><td>Guru menyapa, mengajak berdoa, memeriksa kesiapan, dan membangun kesepakatan kelas. Murid mengamati gambar situasi rumah/sekolah. Pertanyaan pemantik: “Apa yang terjadi jika setiap orang tidak menaati aturan?” Guru menyampaikan tujuan dan manfaat pembelajaran.</td><td>10 menit</td></tr>'+
- '<tr><td><b>Memahami</b><br>Bermakna</td><td>Murid mengamati kartu/gambar perilaku patuh dan tidak patuh aturan. Berpasangan, murid mengelompokkan contoh aturan di rumah, sekolah, dan lingkungan. Guru memandu murid menjelaskan alasan serta manfaat aturan dengan bahasa sendiri.</td><td>15 menit</td></tr>'+
- '<tr><td><b>Mengaplikasi</b><br>Bermakna dan menggembirakan</td><td>Kelompok kecil memperoleh kartu masalah: antre, membuang sampah, menjaga ketenangan kelas, atau jadwal piket. Murid menentukan aturan yang relevan, akibat pelanggaran, dan solusi. Kelompok membuat mini-poster “Ayo Patuh Aturan” atau simulasi singkat lalu mempresentasikan hasil. Guru memberi bantuan sesuai kebutuhan.</td><td>25 menit</td></tr>'+
- '<tr><td><b>Merefleksi</b><br>Berkesadaran</td><td>Murid mengisi tiket keluar: satu aturan yang akan dipatuhi, manfaatnya, dan tindakan nyata yang akan dilakukan. Guru memberi umpan balik dan mengajak refleksi.</td><td>10 menit</td></tr>'+
- '<tr><td><b>Penutup</b></td><td>Guru dan murid menyimpulkan pembelajaran, mengapresiasi kolaborasi, memberi tindak lanjut pembiasaan bersama keluarga, dan menutup kegiatan.</td><td>10 menit</td></tr></table>'+
- '<h3>E. ASESMEN PEMBELAJARAN</h3><ul><li><b>Awal/diagnostik:</b> tanya jawab tentang contoh aturan dan pengalaman menaati aturan.</li><li><b>Formatif/proses:</b> observasi partisipasi, kerja sama, pengelompokan contoh, dan alasan yang disampaikan.</li><li><b>Sumatif/akhir:</b> hasil LKPD, tiket keluar, serta presentasi atau simulasi kelompok.</li></ul><table><tr><th>Aspek</th><th>Indikator</th><th>Bukti</th></tr><tr><td>Pengetahuan</td><td>Mengidentifikasi aturan dan manfaatnya</td><td>Tanya jawab, LKPD</td></tr><tr><td>Keterampilan</td><td>Mengusulkan solusi dan menyampaikan hasil</td><td>Presentasi/simulasi</td></tr><tr><td>Sikap/kebiasaan</td><td>Menunjukkan tanggung jawab dan kepatuhan</td><td>Observasi dan refleksi</td></tr></table>'+
- '<h3>F. DIFERENSIASI DAN TINDAK LANJUT</h3><p><b>Dukungan:</b> gunakan gambar konkret, contoh kalimat, dan pendampingan teman. <b>Pengayaan:</b> murid membandingkan manfaat aturan di dua lingkungan dan membuat ajakan tertulis. <b>Remedial:</b> ulangi pengelompokan melalui kartu gambar dan percakapan terpandu.</p>'+
- '<h3>G. REFLEKSI GURU</h3><p>Apakah tujuan tercapai? Aktivitas mana yang paling bermakna? Siapa yang membutuhkan dukungan lanjutan? Apakah semua murid mendapat kesempatan berpartisipasi? Apa perbaikan untuk pertemuan berikutnya?</p>'+
- '<p style="margin-top:28px">Jebus, ......................... 2026<br>Guru Kelas III,</p><p style="margin-top:48px"><b>'+teacher+'</b></p>';
- docText=$('rpm').innerText; $('editor').value=docText; extras(d); $('status').textContent='Draf RPM dibuat • silakan tinjau dan edit';
+
+const $ = id => document.getElementById(id);
+const FIELD_IDS = ['school','grade','phase','semester','year','teacher','subject','topic','duration','goal','model','context','media'];
+const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+const setStatus = message => { const node = $('status'); if (node) node.textContent = message; };
+function readForm() {
+  const values = {};
+  FIELD_IDS.forEach(id => { values[id] = $(id).value.trim(); });
+  return values;
 }
-function extras(d){
- $('lkpd').innerHTML='<h2>Lembar Kerja Peserta Didik</h2><p><b>Nama:</b> .................................... <b>Kelas:</b> '+esc(d.grade)+'</p><p><b>Materi:</b> '+esc(d.topic)+'</p><p><b>Tujuan:</b> Mengidentifikasi aturan dan menjelaskan manfaat mematuhinya.</p><h3>Petunjuk</h3><ol><li>Amati setiap situasi.</li><li>Tentukan perilakunya patuh atau tidak patuh aturan.</li><li>Tulis alasan atau akibatnya.</li></ol><table><tr><th>No.</th><th>Situasi</th><th>Patuh/tidak</th><th>Alasan/akibat</th></tr>'+['Datang ke sekolah tepat waktu.','Membuang sampah di halaman.','Mengantre saat membeli makanan.','Tidak mengerjakan piket kelas.','Meminta izin sebelum memakai barang orang lain.'].map((s,i)=>'<tr><td>'+(i+1)+'</td><td>'+s+'</td><td>................</td><td>................</td></tr>').join('')+'</table><h3>Ayo berpikir</h3><p>1. Mengapa kita perlu menaati aturan? ................................................</p><p>2. Satu aturan yang akan saya biasakan: ................................................</p><p>3. Manfaatnya bagi orang lain: ................................................</p><h3>Refleksi diri</h3><p>Hari ini saya belajar bahwa ................................................</p><p>Saya akan membiasakan ................................................</p>';
- $('rubric').innerHTML='<h2>Rubrik Penilaian</h2><p>Materi: '+esc(d.topic)+' • Kelas '+esc(d.grade)+'</p><table><tr><th>Aspek</th><th>4 – Sangat berkembang</th><th>3 – Berkembang</th><th>2 – Mulai berkembang</th><th>1 – Perlu bimbingan</th></tr><tr><td>Mengidentifikasi aturan</td><td>Menjelaskan contoh dari 3 lingkungan secara tepat dan mandiri.</td><td>Menjelaskan sebagian besar contoh dengan tepat.</td><td>Menjelaskan beberapa contoh dengan bantuan.</td><td>Belum mampu tanpa bimbingan intensif.</td></tr><tr><td>Menjelaskan manfaat</td><td>Memberi alasan dan contoh relevan.</td><td>Menjelaskan manfaat dengan alasan sederhana.</td><td>Jawaban masih terbatas.</td><td>Belum dapat menjelaskan.</td></tr><tr><td>Kolaborasi dan komunikasi</td><td>Aktif, menghargai pendapat, ide jelas.</td><td>Bekerja sama dan menyampaikan ide.</td><td>Berpartisipasi setelah diarahkan.</td><td>Belum terlibat konsisten.</td></tr><tr><td>Solusi/simulasi</td><td>Solusi tepat, realistis, dan dapat dicontoh.</td><td>Solusi tepat dengan sedikit arahan.</td><td>Solusi perlu diperjelas.</td><td>Belum menemukan solusi sesuai masalah.</td></tr></table><p><b>Pengolahan:</b> jumlah skor diperoleh ÷ skor maksimal × 100. Gunakan hasil sebagai informasi perkembangan, bukan satu-satunya dasar penilaian.</p>';
+function showTab(tabName) {
+  ['rpm','edit','lkpd','rubric'].forEach(id => {
+    const panel = $(id);
+    if (panel) panel.classList.toggle('hidden', id !== tabName);
+  });
+  document.querySelectorAll('.tab').forEach(button => {
+    button.classList.toggle('active', button.dataset.tab === tabName);
+    button.setAttribute('aria-selected', button.dataset.tab === tabName ? 'true' : 'false');
+  });
 }
-document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');['rpm','edit','lkpd','rubric'].forEach(x=>$(x).classList.toggle('hidden',x!==b.dataset.tab));});
-$('generate').onclick=generate;
-$('save').onclick=()=>{localStorage.setItem('rpm-smart-2026',JSON.stringify(data()));$('status').textContent='Isian disimpan di browser';};
-$('load').onclick=()=>{let d=JSON.parse(localStorage.getItem('rpm-smart-2026')||'null');if(!d){$('status').textContent='Belum ada isian tersimpan';return;}Object.keys(d).forEach(k=>{if($(k))$(k).value=d[k]});generate();$('status').textContent='Isian dimuat';};
-$('apply').onclick=()=>{$('rpm').innerHTML='<pre>'+esc($('editor').value)+'</pre>';docText=$('editor').value;document.querySelector('[data-tab="rpm"]').click();$('status').textContent='Edit diterapkan';};
-$('word').onclick=()=>{let html='<!doctype html><html><head><meta charset="utf-8"><style>body{font:12pt Arial}table{border-collapse:collapse;width:100%}td,th{border:1px solid #333;padding:6px;vertical-align:top}h2{text-align:center}</style></head><body>'+ $('rpm').innerHTML+'</body></html>';let a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff',html],{type:'application/msword'}));a.download='RPM_Pendidikan_Pancasila_Kelas_III.doc';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);};
-$('pdf').onclick=()=>{document.querySelector('[data-tab="rpm"]').click();window.print();};
-$('copy').onclick=()=>{navigator.clipboard.writeText($('rpm').innerText).then(()=>$('status').textContent='Teks disalin').catch(()=>$('status').textContent='Izin clipboard tidak tersedia');};
-generate();
+function buildExtras(d) {
+  $('lkpd').innerHTML =
+    '<h2>Lembar Kerja Peserta Didik</h2>' +
+    '<p><b>Nama:</b> .................................... <b>Kelas:</b> ' + escapeHTML(d.grade) + '</p>' +
+    '<p><b>Materi:</b> ' + escapeHTML(d.topic) + '</p>' +
+    '<p><b>Tujuan:</b> Mengidentifikasi aturan dan menjelaskan manfaat mematuhinya.</p>' +
+    '<h3>Petunjuk</h3><ol><li>Amati setiap situasi.</li><li>Tentukan perilakunya patuh atau tidak patuh aturan.</li><li>Tulis alasan atau akibatnya.</li></ol>' +
+    '<table><tr><th>No.</th><th>Situasi</th><th>Patuh / tidak</th><th>Alasan / akibat</th></tr>' +
+    ['Datang ke sekolah tepat waktu.','Membuang sampah di halaman.','Mengantre saat membeli makanan.','Tidak mengerjakan piket kelas.','Meminta izin sebelum memakai barang orang lain.']
+      .map((item,index) => '<tr><td>' + (index + 1) + '</td><td>' + item + '</td><td>................</td><td>................</td></tr>').join('') +
+    '</table><h3>Ayo berpikir</h3><p>1. Mengapa kita perlu menaati aturan? ................................................</p>' +
+    '<p>2. Satu aturan yang akan saya biasakan: ................................................</p>' +
+    '<p>3. Apa manfaatnya bagi orang lain? ................................................</p>' +
+    '<h3>Refleksi diri</h3><p>Hari ini saya belajar bahwa ................................................</p>' +
+    '<p>Saya akan membiasakan ................................................</p>';
+
+  $('rubric').innerHTML =
+    '<h2>Rubrik Penilaian</h2><p>Materi: ' + escapeHTML(d.topic) + ' • Kelas ' + escapeHTML(d.grade) + '</p>' +
+    '<table><tr><th>Aspek</th><th>4 – Sangat berkembang</th><th>3 – Berkembang</th><th>2 – Mulai berkembang</th><th>1 – Perlu bimbingan</th></tr>' +
+    '<tr><td>Mengidentifikasi aturan</td><td>Menjelaskan contoh dari 3 lingkungan secara tepat dan mandiri.</td><td>Menjelaskan sebagian besar contoh dengan tepat.</td><td>Menjelaskan beberapa contoh dengan bantuan.</td><td>Belum mampu tanpa bimbingan intensif.</td></tr>' +
+    '<tr><td>Menjelaskan manfaat</td><td>Memberi alasan dan contoh relevan.</td><td>Menjelaskan manfaat dengan alasan sederhana.</td><td>Jawaban masih terbatas.</td><td>Belum dapat menjelaskan.</td></tr>' +
+    '<tr><td>Kolaborasi dan komunikasi</td><td>Aktif, menghargai pendapat, ide jelas.</td><td>Bekerja sama dan menyampaikan ide.</td><td>Berpartisipasi setelah diarahkan.</td><td>Belum terlibat konsisten.</td></tr>' +
+    '<tr><td>Solusi / simulasi</td><td>Solusi tepat, realistis, dan dapat dicontoh.</td><td>Solusi tepat dengan sedikit arahan.</td><td>Solusi perlu diperjelas.</td><td>Belum menemukan solusi sesuai masalah.</td></tr></table>' +
+    '<p><b>Pengolahan:</b> jumlah skor diperoleh ÷ skor maksimal × 100. Gunakan hasil sebagai informasi perkembangan, bukan satu-satunya dasar penilaian.</p>';
+}
+function generateRPM() {
+  const d = readForm();
+  if (!d.school || !d.subject || !d.topic || !d.goal) {
+    setStatus('Lengkapi sekolah, mata pelajaran, materi, dan tujuan pembelajaran terlebih dahulu.');
+    return;
+  }
+  const teacher = escapeHTML(d.teacher);
+  $('rpm').innerHTML =
+    '<h2>Rencana Pembelajaran Mendalam</h2><h2>' + escapeHTML(d.subject) + '</h2>' +
+    '<p style="text-align:center"><b>Materi: ' + escapeHTML(d.topic) + '</b></p>' +
+    '<h3>A. IDENTITAS PEMBELAJARAN</h3><table>' +
+    '<tr><td>Satuan Pendidikan</td><td>' + escapeHTML(d.school) + '</td><td>Fase / Kelas</td><td>' + escapeHTML(d.phase) + ' / ' + escapeHTML(d.grade) + '</td></tr>' +
+    '<tr><td>Mata Pelajaran</td><td>' + escapeHTML(d.subject) + '</td><td>Semester</td><td>' + escapeHTML(d.semester) + '</td></tr>' +
+    '<tr><td>Tahun Pelajaran</td><td>' + escapeHTML(d.year) + '</td><td>Alokasi Waktu</td><td>' + escapeHTML(d.duration) + '</td></tr>' +
+    '<tr><td>Guru</td><td colspan="3">' + teacher + '</td></tr></table>' +
+    '<h3>B. IDENTIFIKASI KESIAPAN PESERTA DIDIK</h3><p>' + escapeHTML(d.context) +
+    ' Guru memetakan pengetahuan awal melalui tanya jawab singkat, serta mengamati pengalaman, minat, kesiapan, dan kebutuhan dukungan murid.</p>' +
+    '<h3>C. DESAIN PEMBELAJARAN</h3><p><b>Tujuan pembelajaran:</b> ' + escapeHTML(d.goal) + '</p>' +
+    '<p><b>Topik kontekstual:</b> ' + escapeHTML(d.topic) + ' dalam kehidupan di rumah, sekolah, dan masyarakat.</p>' +
+    '<p><b>Praktik pedagogis:</b> ' + escapeHTML(d.model) + ' dipadukan dengan diskusi, tanya jawab, simulasi, dan refleksi.</p>' +
+    '<p><b>Dimensi profil lulusan yang dikembangkan:</b> kewargaan, penalaran kritis, kolaborasi, komunikasi, dan kemandirian (sesuaikan dengan fokus kegiatan).</p>' +
+    '<p><b>Kemitraan:</b> keluarga mendukung pembiasaan aturan di rumah. <b>Lingkungan belajar:</b> aman, inklusif, dan menghargai pendapat. <b>Pemanfaatan digital:</b> gambar, video singkat, atau kuis jika tersedia.</p>' +
+    '<p><b>Media dan sumber:</b> ' + escapeHTML(d.media) + '.</p>' +
+    '<h3>D. PENGALAMAN BELAJAR</h3><table><tr><th>Tahap</th><th>Aktivitas pembelajaran</th><th>Waktu</th></tr>' +
+    '<tr><td><b>Pendahuluan</b><br>Berkesadaran dan menggembirakan</td><td>Guru menyapa, mengajak berdoa, memeriksa kesiapan, dan membangun kesepakatan kelas. Murid mengamati gambar situasi rumah atau sekolah. Pertanyaan pemantik: “Apa yang terjadi jika setiap orang tidak menaati aturan?” Guru menyampaikan tujuan dan manfaat pembelajaran.</td><td>10 menit</td></tr>' +
+    '<tr><td><b>Memahami</b><br>Bermakna</td><td>Murid mengamati kartu atau gambar perilaku patuh dan tidak patuh aturan. Berpasangan, murid mengelompokkan contoh aturan di rumah, sekolah, dan lingkungan. Guru memandu murid menjelaskan alasan serta manfaat aturan dengan bahasa sendiri.</td><td>15 menit</td></tr>' +
+    '<tr><td><b>Mengaplikasi</b><br>Bermakna dan menggembirakan</td><td>Kelompok kecil memperoleh kartu masalah: antre, membuang sampah, menjaga ketenangan kelas, atau jadwal piket. Murid menentukan aturan yang relevan, akibat pelanggaran, dan solusi. Kelompok membuat mini-poster “Ayo Patuh Aturan” atau simulasi singkat lalu mempresentasikan hasil. Guru memberi bantuan sesuai kebutuhan.</td><td>25 menit</td></tr>' +
+    '<tr><td><b>Merefleksi</b><br>Berkesadaran</td><td>Murid mengisi tiket keluar: satu aturan yang akan dipatuhi, manfaatnya, dan tindakan nyata yang akan dilakukan. Guru memberi umpan balik dan mengajak refleksi.</td><td>10 menit</td></tr>' +
+    '<tr><td><b>Penutup</b></td><td>Guru dan murid menyimpulkan pembelajaran, mengapresiasi kolaborasi, memberi tindak lanjut pembiasaan bersama keluarga, dan menutup kegiatan.</td><td>10 menit</td></tr></table>' +
+    '<h3>E. ASESMEN PEMBELAJARAN</h3><ul><li><b>Awal / diagnostik:</b> tanya jawab tentang contoh aturan dan pengalaman menaati aturan.</li>' +
+    '<li><b>Formatif / proses:</b> observasi partisipasi, kerja sama, pengelompokan contoh, dan alasan yang disampaikan.</li>' +
+    '<li><b>Sumatif / akhir:</b> hasil LKPD, tiket keluar, serta presentasi atau simulasi kelompok.</li></ul>' +
+    '<table><tr><th>Aspek</th><th>Indikator</th><th>Bukti</th></tr><tr><td>Pengetahuan</td><td>Mengidentifikasi aturan dan manfaatnya</td><td>Tanya jawab, LKPD</td></tr>' +
+    '<tr><td>Keterampilan</td><td>Mengusulkan solusi dan menyampaikan hasil</td><td>Presentasi / simulasi</td></tr>' +
+    '<tr><td>Sikap / kebiasaan</td><td>Menunjukkan tanggung jawab dan kepatuhan</td><td>Observasi dan refleksi</td></tr></table>' +
+    '<h3>F. DIFERENSIASI DAN TINDAK LANJUT</h3><p><b>Dukungan:</b> gunakan gambar konkret, contoh kalimat, dan pendampingan teman. <b>Pengayaan:</b> murid membandingkan manfaat aturan di dua lingkungan dan membuat ajakan tertulis. <b>Remedial:</b> ulangi pengelompokan melalui kartu gambar dan percakapan terpandu.</p>' +
+    '<h3>G. REFLEKSI GURU</h3><p>Apakah tujuan tercapai? Aktivitas mana yang paling bermakna? Siapa yang membutuhkan dukungan lanjutan? Apakah semua murid mendapat kesempatan berpartisipasi? Apa perbaikan untuk pertemuan berikutnya?</p>' +
+    '<p style="margin-top:28px">Jebus, ......................... 2026<br>Guru Kelas III,</p><p style="margin-top:48px"><b>' + teacher + '</b></p>';
+  $('editor').value = $('rpm').innerText;
+  buildExtras(d);
+  setStatus('Draf berhasil dibuat. Periksa dan sesuaikan sebelum digunakan.');
+}
+function saveForm() {
+  try { localStorage.setItem('rpm-smart-2026', JSON.stringify(readForm())); setStatus('Isian tersimpan di browser/perangkat ini.'); }
+  catch (error) { setStatus('Penyimpanan browser tidak tersedia: ' + error.message); }
+}
+function loadForm() {
+  try {
+    const raw = localStorage.getItem('rpm-smart-2026');
+    if (!raw) { setStatus('Belum ada isian tersimpan di browser ini.'); return; }
+    const d = JSON.parse(raw);
+    FIELD_IDS.forEach(id => { if (Object.prototype.hasOwnProperty.call(d,id)) $(id).value = d[id]; });
+    generateRPM();
+    setStatus('Isian berhasil dimuat.');
+  } catch (error) { setStatus('Gagal memuat isian: ' + error.message); }
+}
+function editApply() {
+  const edited = $('editor').value.trim();
+  if (!edited) { setStatus('Teks RPM masih kosong.'); return; }
+  $('rpm').innerHTML = '<pre>' + escapeHTML(edited) + '</pre>';
+  showTab('rpm');
+  setStatus('Perubahan teks diterapkan pada pratinjau.');
+}
+function exportWord() {
+  const body = $('rpm').innerHTML;
+  if (!body.trim()) { setStatus('Buat draf RPM terlebih dahulu.'); return; }
+  const html = '<!doctype html><html><head><meta charset="utf-8"><style>body{font:12pt Arial}table{border-collapse:collapse;width:100%}td,th{border:1px solid #333;padding:6px;vertical-align:top}h2{text-align:center}h3{margin-top:16px}</style></head><body>' + body + '</body></html>';
+  const blob = new Blob(['\ufeff',html], {type:'application/msword'});
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url; link.download = 'RPM_Pendidikan_Pancasila_Kelas_III.doc';
+  document.body.appendChild(link); link.click(); link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1500);
+  setStatus('Dokumen Word mulai diunduh.');
+}
+function printPDF() {
+  if (!$('rpm').innerHTML.trim()) { setStatus('Buat draf RPM terlebih dahulu.'); return; }
+  showTab('rpm');
+  setStatus('Pilih “Save as PDF / Simpan sebagai PDF” pada dialog cetak.');
+  window.print();
+}
+async function copyText() {
+  const text = $('rpm').innerText || '';
+  if (!text.trim()) { setStatus('Tidak ada teks RPM untuk disalin.'); return; }
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+    } else {
+      const temp = document.createElement('textarea');
+      temp.value = text; temp.setAttribute('readonly','');
+      temp.style.position = 'fixed'; temp.style.opacity = '0';
+      document.body.appendChild(temp); temp.select();
+      const copied = document.execCommand('copy'); temp.remove();
+      if (!copied) throw new Error('Browser menolak akses clipboard.');
+    }
+    setStatus('Teks RPM berhasil disalin.');
+  } catch (error) { setStatus('Tidak bisa menyalin otomatis. Gunakan tab Edit teks lalu salin manual.'); }
+}
+document.addEventListener('click', event => {
+  const button = event.target.closest('button');
+  if (!button) return;
+  if (button.dataset.tab) { showTab(button.dataset.tab); return; }
+  switch (button.id) {
+    case 'generate': generateRPM(); break;
+    case 'save': saveForm(); break;
+    case 'load': loadForm(); break;
+    case 'apply': editApply(); break;
+    case 'word': exportWord(); break;
+    case 'pdf': printPDF(); break;
+    case 'copy': copyText(); break;
+  }
+});
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('button').forEach(button => { button.type = 'button'; });
+  generateRPM();
+});
+if (document.readyState !== 'loading') {
+  document.querySelectorAll('button').forEach(button => { button.type = 'button'; });
+  generateRPM();
+}
+
 </script></body></html>
